@@ -18,11 +18,16 @@ export function Home() {
   }
 
   function handleToggleTaskDone(id: number) {
-    //TODO - toggle task done if exists
+    const updatedTasks = tasks.map(task=>({...task}))
+    const index = updatedTasks.findIndex(task=>task.id === id)
+    updatedTasks[index].done = !updatedTasks[index].done
+    setTasks(updatedTasks);
   }
 
   function handleRemoveTask(id: number) {
-    //TODO - remove task from state
+    setTasks(oldState=> oldState.filter(
+      skill => skill.id != id
+    ));
   }
 
   return (
